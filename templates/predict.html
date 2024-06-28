@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Data Science worker salary prediction</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 20px;
+			padding: 20px;
+			background-color: #f4f4f4;
+		}
+        .box {
+            display: flex;
+            justify-content: space-between;
+        }
+		h2 {
+			color: #333;
+		}
+		form {
+			background: #fff;
+			padding: 20px;
+			border-radius: 8px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+		div {
+			margin-bottom: 10px;
+		}
+		label {
+			margin-bottom: 5px;
+			display: block;
+			color: #666;
+		}
+		select {
+			width: 100%;
+			padding: 8px;
+			margin: 4px 0;
+			box-sizing: border-box;
+			border-radius: 4px;
+			border: 1px solid #ddd;
+			font-size: 14px;
+		}
+		button {
+			background-color: #007bff;
+			color: white;
+			padding: 10px 24px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+		button:hover {
+			background-color: #0056b3;
+		}
+        .wrap{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+        }
+	</style>
+</head>
+<body>
+    <div class="box">
+        <h2>Data Science Worker Salary Prediction</h2>
+        <!-- <form action="/logout" method="post">
+            <button type="submit">Logout</button>
+        </form> -->
+    </div>
+	<form action="/predict" method="post">
+        <div  class="wrap">
+            <div>
+                <label for="job_title">Job Title:</label>
+                <select id="job_title" name="job_title">
+                    <option value="Data Scientist">Data Scientist</option>
+                    <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+                    <option value="Applied Scientist">Applied Scientist</option>
+                    <option value="Data Analyst">Data Analyst</option>
+                    <option value="Data Modeler">Data Modeler</option>
+                    <option value="Research Engineer">Research Engineer</option>
+                    <option value="Analytics Engineer">Analytics Engineer</option>
+                    <option value="Business Intelligence Engineer">Business Intelligence Engineer</option>
+                    <option value="Data Strategist">Data Strategist</option>
+                    <option value="Data Engineer">Data Engineer</option>
+                    <option value="Computer Vision Engineer">Computer Vision Engineer</option>
+                    <option value="Data Quality Analyst">Data Quality Analyst</option>
+                    <option value="Data Architect">Data Architect</option>
+                    <option value="Research Scientist">Research Scientist</option>
+                    <option value="ETL Engineer">ETL Engineer</option>
+                    <option value="Data DevOps Engineer">Data DevOps Engineer</option>
+                    <option value="AI Specialist">AI Specialist</option>
+                    <option value="Head of Data">Head of Data</option>
+                    <option value="Data Manager">Data Manager</option>
+                    <option value="Data Specialist">Data Specialist</option>
+                    <option value="Autonomous Vehicle Technician">Autonomous Vehicle Technician</option>
+                    <option value="Cloud Database Engineer">Cloud Database Engineer</option>
+                    <option value="Data Infrastructure Engineer">Data Infrastructure Engineer</option>
+                    <option value="Data Operations Engineer">Data Operations Engineer</option>
+                    <option value="Deep Learning Researcher">Deep Learning Researcher</option>
+                    <option value="Business Intelligence Analyst">Business Intelligence Analyst</option>
+                    <option value="Insight Analyst">Insight Analyst</option>
+                    <option value="Deep Learning Engineer">Deep Learning Engineer</option>
+                    <option value="Big Data Architect">Big Data Architect</option>
+                    <option value="Computer Vision Software Engineer">Computer Vision Software Engineer</option>
+                    <option value="Business Intelligence Developer">Business Intelligence Developer</option>
+                    <option value="Data Lead">Data Lead</option>
+                    <option value="NLP Engineer">NLP Engineer</option>
+                </select>
+            </div>
+            <div>
+                <label for="experience_level">Experience Level:</label>
+                <select id="experience_level" name="experience_level">
+                    <option value="Entry-level">Entry-level</option>
+                    <option value="Mid-level">Mid-level</option>
+                    <option value="Senior">Senior</option>
+                    <option value="Executive">Executive</option>
+                </select>
+            </div>
+            <div>
+                <label for="employment_type">Employment Type:</label>
+                <select id="employment_type" name="employment_type">
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Contract">Contract</option>
+                    <option value="Freelance">Freelance</option>
+                </select>
+            </div>
+            <div>
+                <label for="remote_ratio">Remote Ratio:</label>
+                <select id="remote_ratio" name="remote_ratio">
+                    <option value="0">0</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+            <div>
+                <label for="company_size">Company Size:</label>
+                <select id="company_size" name="company_size">
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                </select>
+            </div>
+            <div>
+                <label for="company_location">Company Location:</label>
+                <select id="company_location" name="company_location">
+                    <option value="ES">ES</option>
+                    <option value="US">US</option>
+                    <option value="CA">CA</option>
+                    <option value="DE">DE</option>
+                    <option value="GB">GB</option>
+                    <option value="IN">IN</option>
+                    <option value="FR">FR</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+		<button type="submit">Predict</button>
+	</form>
+	{% if prediction_text %}
+		<h3>{{ prediction_text }}</h3>
+	{% endif %}
+
+    <hr/>
+
+    {% if features %}
+        <h3>Your profile:</h3>
+        <p>
+            {% for key, value in features.items() %}
+                <p><b>{{ key }}</b>: <span>{{ value }}</span></p>
+            {% endfor %}
+        </p>
+    {% endif %}
+</body>
+</html>
